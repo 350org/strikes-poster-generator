@@ -17,7 +17,7 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 
 ## Install
 
-* `git clone https://github.com/voxmedia/meme.git`
+* `git clone https://github.com/350org/strikes-poster-generator.git`
 * `bundle install`
 * `bundle exec middleman`
 
@@ -27,15 +27,15 @@ This will start a local web server running at: `http://localhost:4567/`
 
 ### Configuration
 
-Settings and controls are configured through `source/javascripts/settings.js.erb`. The [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb) has ample comments to document configuration.
+Settings and controls are configured through `source/javascripts/settings.js.erb`. The [settings file](https://github.com/350org/strikes-poster-generator/blob/master/source/javascripts/settings.js.erb) has ample comments to document configuration.
 
 ### Fonts
 
-Include your own fonts in `stylesheets/_fonts.scss`, then add your font options into the [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb#L12).
+Include your own fonts in `stylesheets/_fonts.scss`, then add your font options into the [settings file](https://github.com/350org/strikes-poster-generator/blob/master/source/javascripts/settings.js.erb#L11).
 
 ### Editor theme
 
-Set the [theme-color variable](https://github.com/voxmedia/meme/blob/master/source/stylesheets/_vars.scss#L3) in `source/stylesheets/_vars.scss`. That one color will be tinted across all editor controls.
+Set the [theme-color variable](https://github.com/350org/strikes-poster-generator/blob/master/source/stylesheets/_vars.scss#L3) in `source/stylesheets/_vars.scss`. That one color will be tinted across all editor controls.
 
 ## Cross-Origin Resources (CORS)
 
@@ -56,7 +56,7 @@ If you're hosting this application on the same domain that serves your images, t
 
 ## Contributing
 
-1. Fork it ( https://github.com/voxmedia/meme/fork )
+1. Fork it ( https://github.com/350org/strikes-poster-generator/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
