@@ -34,3 +34,9 @@ $text-font-secondary: katwijk-mono-web,Menlo, Monaco, Consolas, 'Lucida Console'
     calc(#{$multiplier * $cross_axis_unit}vh + #{$multiplier * $main_axis_unit}vw);
   @return $wva-pair;
 }
+
+@mixin appearance($value) {
+  -moz-appearance: $value;
+  -webkit-appearance: $value;
+  appearance: $value;
+}

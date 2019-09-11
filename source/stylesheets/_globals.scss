@@ -19,10 +19,6 @@ body {
   width: 100%;
 }
 
-body.noselect {
-  @include user-select(none);
-}
-
 p{
   margin:0 0 1em;}
 
