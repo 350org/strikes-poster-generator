@@ -17,11 +17,18 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 
 ## Install
 
+You'll need to have Ruby and Node installed.
+
 * `git clone https://github.com/350org/strikes-poster-generator.git`
 * `bundle install`
 * `bundle exec middleman`
 
 This will start a local web server running at: `http://localhost:4567/`
+
+To lint the JavaScript:
+
+* `npm install` (just once)
+* `npm run lint`
 
 ## Customization
 
