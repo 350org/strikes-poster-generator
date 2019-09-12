@@ -6,11 +6,18 @@ This web app generates posters and flyers for the [Global Climate Strike](https:
 
 ## Install
 
+You'll need to have Ruby and Node installed.
+
 * `git clone https://github.com/350org/strikes-poster-generator.git`
 * `bundle install`
 * `bundle exec middleman`
 
 This will start a local web server running at: `http://localhost:4567/`
+
+To lint the JavaScript:
+
+* `npm install` (just once)
+* `npm run lint`
 
 ## Customization
 
