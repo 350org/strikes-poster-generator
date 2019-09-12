@@ -1,4 +1,4 @@
-# #ClimateStrike Poster & Flyer Maker
+# Global Climate Strike Poster & Flyer Maker
 
 Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
 
