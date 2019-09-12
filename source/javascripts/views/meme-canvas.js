@@ -20,6 +20,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     // Listen to model for changes, and re-render in response:
     this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'imageLoaded', this.render);
   },
 
   setDownload: function() {
@@ -38,40 +39,27 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var d = this.model.toJSON();
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
-    var watermarkWidth = m.watermark.width;
 
     switch (d.aspectRatio) {
       case "us-letter":
         d.width = 824, d.height = 1060;
         padding = Math.round(d.width * d.paddingRatio);
-				m.background.src = d.imageSrc;
-				// m.setImageSrc(d.imageSrc);
-				console.log(m.background.src);
         break;
       case "us-tabloid":
         d.width = 1060, d.height = 1620;
         padding = Math.round(d.width * d.paddingRatio);
         d.eventInfoFontSize = 26;
         d.eventDescriptionFontSize = 17;
-				m.background.src = d.imageSrcTabloid;
-				// m.setImageSrc(d.imageSrcTabloid);
-				console.log(m.background.src);
         break;
       case "a4":
         d.width = 820, d.height = 1100;
         padding = Math.round(d.width * d.paddingRatio);
-				m.background.src = d.imageSrcA4;
-				// m.setImageSrc(d.imageSrcA4);
-				console.log(m.background.src);
         break;
       case "a3":
         d.width = 1100, d.height = 1580;
         padding = Math.round(d.width * d.paddingRatio);
         d.eventInfoFontSize = 25;
         d.eventDescriptionFontSize = 17;
-				m.background.src = d.imageSrcA3;
-				// m.setImageSrc(d.imageSrcA3);
-				console.log(m.background.src);
     }
 
     // Reset canvas display:
@@ -80,9 +68,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
     ctx.clearRect(0, 0, d.width, d.height);
 
     function renderBackground(ctx) {
+      if (!m.hasBackground()) {
+        return;
+      }
+
+      var backgroundImage = m.getBackgroundImage();
+
       // Base height and width:
-      var bh = m.background.height;
-      var bw = m.background.width;
+      var bh = backgroundImage.height;
+      var bw = backgroundImage.width;
 
       /* user-scalable image
       if (bh && bw) {
@@ -107,7 +101,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           tw = mw;
         }
         ctx.globalAlpha = d.imageOpacity;
-        ctx.drawImage(m.background, 0, 0, bw, bh, (d.width-tw)/2, (d.height-th)/2, tw, th);
+        ctx.drawImage(backgroundImage, 0, 0, bw, bh, (d.width-tw)/2, (d.height-th)/2, tw, th);
       }
     }
 
@@ -318,32 +312,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 
-
-    function renderWatermark(ctx) {
-      // Base & transformed height and width:
-      var bw, bh, tw, th;
-      bh = th = m.watermark.height;
-      watermarkWidth = bw = tw = m.watermark.width;
-
-      if (bh && bw) {
-        // Calculate watermark maximum width:
-        var mw = d.width * d.watermarkMaxWidthRatio;
-
-        // Constrain transformed height based on maximum allowed width:
-        if (mw < bw) {
-          th = bh * (mw / bw);
-          watermarkWidth = tw = mw;
-        }
-        ctx.globalAlpha = d.watermarkAlpha;
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, padding-22, d.height-padding/2-th+10, tw, th);
-        ctx.globalAlpha = 1;
-      }
-    }
-
     renderBackground(ctx);
     renderOverlay(ctx);
     renderBackgroundColor(ctx);
-    renderWatermark(ctx);
 
     renderHeadlineText(ctx);
     renderDateTimeText(ctx);
@@ -361,7 +332,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     });
 
     // Enable drag cursor while canvas has artwork:
-    this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
+    this.canvas.style.cursor = this.model.hasBackground() ? 'move' : 'default';
   },
 
   events: {

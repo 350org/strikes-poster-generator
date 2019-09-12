@@ -45,10 +45,6 @@ var MEME_SETTINGS = {
 
   imageScale: 1,
   imageOpacity: 1,
-  imageSrc: '<%= image_path("strike-frame-thin-US-letter.png") %>', // default bg image url
-	imageSrcTabloid: '<%= image_path("strike-frame-thin-US-tabloid.png") %>',
-	imageSrcA4: '<%= image_path("strike-frame-thin-A4.png") %>',
-	imageSrcA3: '<%= image_path("strike-frame-thin-A3.png") %>',
   imageOpts: [
     //{text: 'Strike Frame', value:'<%= image_path("strike-frame-thin-US-letter.png") %>'},
   ],
@@ -69,25 +65,30 @@ var MEME_SETTINGS = {
 
   textShadow: false, // Text shadow toggle.
   textShadowEdit: true, // Toggles text shadow control within the editor.
-  watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: .22 , // Maximum allowed width of watermark (percentage of total canvas width).
-
-  // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= %>' and asset_data_uri("image.png") to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%=  %>',
-
-  // Watermark image options: set to empty array to disable watermark picker.
-  // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
-  // Otherwise, just leave "data" attributes blank and allow images to load from your server.
-  watermarkOpts: [],
 
   width: 755, // Canvas rendering width.
   // width: 755 // Canvas rendering width.
   aspectRatio: 'us-letter',
   aspectRatioOpts: [
-    {text: 'US Letter (8.5x11")', value: 'us-letter'},
-    {text: 'US Flyer (11x17")', value: 'us-tabloid'},
-    {text: 'A4 (210 x 297mm)', value: 'a4'},
-    {text: 'A3 (297 x 420mm)', value: 'a3'}
+    {
+      text: 'US Letter (8.5x11")',
+      value: 'us-letter',
+      backgroundImageSrc: '<%= image_path("strike-frame-thin-US-letter.png") %>'
+    },
+    {
+      text: 'US Flyer (11x17")',
+      value: 'us-tabloid',
+      backgroundImageSrc: '<%= image_path("strike-frame-thin-US-tabloid.png") %>'
+    },
+    {
+      text: 'A4 (210 x 297mm)',
+      value: 'a4',
+      backgroundImageSrc: '<%= image_path("strike-frame-thin-A4.png") %>'
+    },
+    {
+      text: 'A3 (297 x 420mm)',
+      value: 'a3',
+      backgroundImageSrc: '<%= image_path("strike-frame-thin-A3.png") %>'
+    }
   ]
 };

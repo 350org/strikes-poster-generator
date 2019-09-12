@@ -13,7 +13,6 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 * Improved initial rendering with loaded web fonts.
 * Improved cross-origin options: both for base64 images and CORS.
 * Highly (and easily!) customizable editor and theme options.
-* Watermark selector.
 
 ## Install
 

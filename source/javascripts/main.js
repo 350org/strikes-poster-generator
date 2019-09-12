@@ -26,7 +26,7 @@ MEME = {
   },
 
   init: function() {
-    this.model = new this.MemeModel(window.MEME_SETTINGS || {});
+    this.model = new this.MemeModel(window.MEME_SETTINGS);
 
     // Create renderer view:
     this.canvas = new this.MemeCanvasView({
