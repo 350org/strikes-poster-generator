@@ -1,19 +1,8 @@
-# Meme v.2
+# #ClimateStrike Poster & Flyer Maker
 
 Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
 
-Meme is a generator that Vox Media uses to create social sharing images. See working version at [http://www.sbnation.com/a/meme](http://www.sbnation.com/a/meme).
-
-![screenshot](readme.png)
-
-## What's new in version 2.0?
-
-* Refactored into a formal MV* app.
-* Fixed bugs with rendering state and repeat drag-n-drop images.
-* Improved initial rendering with loaded web fonts.
-* Improved cross-origin options: both for base64 images and CORS.
-* Highly (and easily!) customizable editor and theme options.
-* Watermark selector.
+This web app generates posters and flyers for the [Global Climate Strike](https://globalclimatestrike.net/). See a working version at [350poster.netlify.com](https://350poster.netlify.com/).
 
 ## Install
 
@@ -46,13 +35,6 @@ If you're hosting this application on the same domain that serves your images, t
 1. Follow this [excellent MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image) about configuring "Access-Control-Allow-Origin" headers. You'll need to enable these headers on your CDN, at which time the Meme app should be able to request images from it.
 
 2. Embed all of your watermark images as base64 data URIs within the `settings.js.erb` file. The asset pipeline's `asset_data_uri` helper method makes this very easy, and effectively embeds all image data within your JavaScript. The downside here is that your JavaScript will become a very large payload as you include more images. In the long term, getting CORS headers configured will be a better option.
-
-## Examples
-
-* http://www.sbnation.com/a/meme
-* https://twitter.com/voxdotcom/status/481671889094340608
-* https://twitter.com/voxdotcom/status/479228288221470721
-* https://twitter.com/voxdotcom/status/481619042545844225
 
 ## Contributing
 
